@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://sn0n6v7hyfns"]
+[gd_scene load_steps=16 format=3 uid="uid://sn0n6v7hyfns"]
 
 [ext_resource type="Texture2D" uid="uid://5cv7uqgg7b33" path="res://assets/swtqmorklila.png" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://ddekue1drfdkq" path="res://scenes/main.gd" id="1_sugp2"]
@@ -24,6 +24,48 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(0.933333, 0.917647, 0.901961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
+bg_color = Color(0.933333, 0.917647, 0.901961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85g3d"]
+bg_color = Color(0.933333, 0.917647, 0.901961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
+bg_color = Color(0.933333, 0.917647, 0.901961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ya4ey"]
+bg_color = Color(0.933333, 0.917647, 0.901961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb6dy"]
+bg_color = Color(0.933333, 0.917647, 0.901961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -437,23 +479,35 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "Info"
 
-[node name="Gray4Vbox" type="GridContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox"]
+[node name="Gray4Vbox" type="VBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox"]
 layout_mode = 2
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
-columns = 2
+theme_override_constants/separation = 15
 
-[node name="NoteInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+[node name="NoteInfoPanel" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
+
+[node name="NoteBox" type="HBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/NoteInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoteInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/NoteInfoPanel/NoteBox"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "*Notera"
 horizontal_alignment = 1
 
-[node name="NoteInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+[node name="NoteInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/NoteInfoPanel/NoteBox"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -462,14 +516,30 @@ theme_override_font_sizes/font_size = 12
 text = "Siffrorna i denna kalkylator är uppskattade och kan möjligen avvika något från verkligheten."
 autowrap_mode = 2
 
-[node name="BruttoInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+[node name="BruttoInfoPanel" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tipki")
+
+[node name="BruttoBox" type="HBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/BruttoInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BruttoInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/BruttoInfoPanel/BruttoBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "Bruttolön"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="BruttoInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+[node name="BruttoInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/BruttoInfoPanel/BruttoBox"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -478,24 +548,21 @@ theme_override_font_sizes/font_size = 12
 text = "Under fältet kan du fylla i din nuvarande bruttolön, vilket hjälper kalkylatorn att uppskatta den mest aktuella skattesatsen för just din situation."
 autowrap_mode = 2
 
-[node name="NyBruttoInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+[node name="SkattInfoPanel" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "Ny bruttolön &
-Avstår i lön"
-horizontal_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_85g3d")
 
-[node name="NyBruttoInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "Under ny bruttolön och avstår i lön kan du välja hur du vill fördela avsättningar till ditt SWTQ-konto. Detta blir grunden för uträkningen som uppskattar din nya nettolön och hur mycket beloppet som avsätts motsvarar på SWTQ-kontot."
-autowrap_mode = 2
+[node name="SkattBox" type="HBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/SkattInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="SkattInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+[node name="SkattInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/SkattInfoPanel/SkattBox"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
@@ -503,7 +570,7 @@ text = "Skatter &
 Avgifter"
 horizontal_alignment = 1
 
-[node name="SkattInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+[node name="SkattInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/SkattInfoPanel/SkattBox"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -512,20 +579,95 @@ theme_override_font_sizes/font_size = 12
 text = "Denna ruta kan oftast ignoreras. Fälten fylls i automatiskt och används för utärkningarna i kalkylatorn. Om du misstänker att något av fälten visar fel värde kan du använda knappen \"Reset\"."
 autowrap_mode = 2
 
-[node name="ResultatInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+[node name="PensionInfoPanel" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
+
+[node name="PensionBox" type="HBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/PensionInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PensionInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/PensionInfoPanel/PensionBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Pension"
+horizontal_alignment = 1
+
+[node name="PensionInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/PensionInfoPanel/PensionBox"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Notera att en minskad bruttolön resulterar i en minksad avsättning till den allmäna pensionen."
+autowrap_mode = 2
+
+[node name="ResultatInfoPanel" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ya4ey")
+
+[node name="ResultatInfoBox" type="HBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/ResultatInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultatInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/ResultatInfoPanel/ResultatInfoBox"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "Resultat"
 horizontal_alignment = 1
 
-[node name="ResultatInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+[node name="ResultatInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/ResultatInfoPanel/ResultatInfoBox"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "Under rutan Resultat visas den viktigaste informationen från kalkylen. Det visar hur mycket din avsättning sänker din nettolön med, hur mycket som avsätts till ditt SWTQ-konto och hur mycket det avsatta beloppet i teorin kan värderas till - med tanke på att momsen är avdragsgill för företaget. Justera värdet \"Moms\" under \"Skatter & Avgifter\" för att se effekten av olika momssatser. "
+autowrap_mode = 2
+
+[node name="NyBruttoInfoPanel" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eb6dy")
+
+[node name="NyBruttoInfoBox" type="HBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/NyBruttoInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NyBruttoInfo1" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/NyBruttoInfoPanel/NyBruttoInfoBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Ny bruttolön &
+Avstår i lön"
+horizontal_alignment = 1
+
+[node name="NyBruttoInfo2" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows/GrayPanel4/GrayMargin/CalculatedBox/Gray4Vbox/NyBruttoInfoPanel/NyBruttoInfoBox"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Under ny bruttolön och avstår i lön kan du välja hur du vill fördela avsättningar till ditt SWTQ-konto. Detta blir grunden för uträkningen som uppskattar din nya nettolön och hur mycket beloppet som avsätts motsvarar på SWTQ-kontot."
 autowrap_mode = 2
 
 [node name="GrayPanel3" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/Columns/Column2Rows"]
