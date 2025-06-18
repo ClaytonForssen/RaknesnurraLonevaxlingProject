@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwija7bta02pn"]
+
+[ext_resource type="Script" uid="uid://cl44f4f5647n6" path="res://scenes/bar_chart.gd" id="1_62e3x"]
+
+[node name="BarChart" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+script = ExtResource("1_62e3x")
+
+[connection signal="draw" from="." to="." method="_on_draw"]

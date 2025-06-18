@@ -1,0 +1,337 @@
+[gd_scene load_steps=11 format=3 uid="uid://sn0n6v7hyfns"]
+
+[ext_resource type="Texture2D" uid="uid://5cv7uqgg7b33" path="res://assets/swtqmorklila.png" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://ddekue1drfdkq" path="res://scenes/main.gd" id="1_sugp2"]
+[ext_resource type="Theme" uid="uid://bxjcy2xyhp541" path="res://assets/custom_theme.tres" id="2_0wfyh"]
+[ext_resource type="FontFile" uid="uid://cxhqc3obukaf2" path="res://assets/FontPattan.ttf" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://cl44f4f5647n6" path="res://scenes/linear_graph.gd" id="5_tbgi4"]
+
+[sub_resource type="Gradient" id="Gradient_sgp6g"]
+colors = PackedColorArray(0, 0, 0, 1, 0.133333, 0.129412, 0.290196, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o5qli"]
+gradient = SubResource("Gradient_sgp6g")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+bg_color = Color(0.933333, 0.917647, 0.901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+bg_color = Color(0.912046, 0.891522, 0.870977, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_sugp2")
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BGFill" type="TextureRect" parent="BG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_o5qli")
+expand_mode = 1
+
+[node name="WindowScroller" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WindowMargin" type="MarginContainer" parent="WindowScroller"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="WindowBG2" type="Panel" parent="WindowScroller/WindowMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jyhfs")
+
+[node name="CalculatorMargin" type="MarginContainer" parent="WindowScroller/WindowMargin/WindowBG2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin"]
+layout_mode = 2
+
+[node name="WindowAlignment" type="VBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Logo" type="TextureRect" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_o5qli")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="GrayPanel1" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="GrayMargin" type="MarginContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Gray1Vbox" type="VBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin"]
+layout_mode = 2
+
+[node name="GrossInc" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sugp2")
+theme_override_font_sizes/font_size = 16
+text = "Nuvarande bruttolön"
+
+[node name="GrossInput" type="SpinBox" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox"]
+layout_mode = 2
+theme = ExtResource("2_0wfyh")
+allow_greater = true
+
+[node name="PayoutSlider" type="HSlider" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox"]
+layout_mode = 2
+theme = ExtResource("2_0wfyh")
+max_value = 1.0
+step = 0.01
+value = 0.95
+
+[node name="SalaryDivLabels" type="HBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox"]
+layout_mode = 2
+
+[node name="Payout" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/SalaryDivLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Ny bruttolön"
+
+[node name="LeaveOut" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/SalaryDivLabels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Avstår i lön"
+horizontal_alignment = 2
+
+[node name="SalaryDiv2" type="HBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox"]
+layout_mode = 2
+
+[node name="Payout" type="SpinBox" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/SalaryDiv2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0wfyh")
+allow_greater = true
+
+[node name="Separator" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/SalaryDiv2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
+
+[node name="Separator2" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/SalaryDiv2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
+
+[node name="LeaveOut" type="SpinBox" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/SalaryDiv2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0wfyh")
+allow_greater = true
+alignment = 2
+
+[node name="GrayPanel2" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="GrayMargin" type="MarginContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TaxBox" type="VBoxContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin"]
+layout_mode = 2
+
+[node name="TaxesLabel" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Skatter & Avgifter"
+
+[node name="Gray1Vbox" type="GridContainer" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox"]
+layout_mode = 2
+columns = 3
+
+[node name="SocialLabel" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Sociala avgifter"
+
+[node name="SocialValue" type="SpinBox" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0wfyh")
+step = 0.01
+value = 31.42
+alignment = 2
+
+[node name="SocialUnit" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "[%]"
+horizontal_alignment = 1
+
+[node name="VacationLabel" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Avsättning semester"
+
+[node name="VacationValue" type="SpinBox" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0wfyh")
+step = 0.01
+value = 14.4
+alignment = 2
+
+[node name="VacationUnit" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "[%]"
+horizontal_alignment = 1
+
+[node name="Tax2Label" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Moms"
+
+[node name="Tax2Value" type="SpinBox" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0wfyh")
+step = 0.01
+value = 25.0
+alignment = 2
+
+[node name="Tax2Unit" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "[%]"
+horizontal_alignment = 1
+
+[node name="Tax3Label" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Skattesats [Auto Estimate]"
+
+[node name="Tax3Value" type="SpinBox" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0wfyh")
+step = 0.01
+alignment = 2
+
+[node name="Tax3Unit" type="Label" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/TaxBox/Gray1Vbox"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "[%]"
+horizontal_alignment = 1
+
+[node name="Reset" type="Button" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Reset"
+
+[node name="GraphPlaceholder" type="Panel" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer"]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="LinearGraph" type="Control" parent="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_tbgi4")
+
+[connection signal="value_changed" from="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/GrossInput" to="." method="_on_gross_input_value_changed"]
+[connection signal="value_changed" from="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/PayoutSlider" to="." method="_on_payout_slider_value_changed"]
+[connection signal="value_changed" from="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/SalaryDiv2/Payout" to="." method="_on_payout_value_changed"]
+[connection signal="value_changed" from="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel1/GrayMargin/Gray1Vbox/SalaryDiv2/LeaveOut" to="." method="_on_leave_out_value_changed"]
+[connection signal="pressed" from="WindowScroller/WindowMargin/WindowBG2/CalculatorMargin/HBoxContainer/WindowAlignment/GrayPanel2/GrayMargin/Reset" to="." method="_on_reset_pressed"]

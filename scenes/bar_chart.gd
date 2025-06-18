@@ -1,0 +1,25 @@
+extends Control
+
+var bar_values := [0.1, 0.1, 0.1, 0.1]  # Values 0–1
+var bar_color: Color = Color.DODGER_BLUE
+var bar_spacing: float = 20.0  # Space between bars
+var bar_width: float = 80.0
+
+func _on_draw() -> void:
+	var chart_width = size.x
+	var chart_height = size.y
+	var total_bars = bar_values.size()
+	var total_width = total_bars * bar_width + (total_bars - 1) * bar_spacing
+	var start_x = (chart_width - total_width) / 2.0  # Center horizontally
+
+	for i in range(total_bars):
+		var value = clamp(bar_values[i], 0.0, 1.0)
+		var bar_height = value * chart_height
+		var x = start_x + i * (bar_width + bar_spacing)
+		var y = chart_height - bar_height
+
+		draw_rect(Rect2(Vector2(x, y), Vector2(bar_width, bar_height)), bar_color)
+
+func update_values(values):
+	bar_values = values
+	queue_redraw()

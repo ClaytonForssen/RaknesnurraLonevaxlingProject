@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d3iri7yhhfghn"]
+
+[ext_resource type="FontFile" uid="uid://cxhqc3obukaf2" path="res://assets/FontPattan.ttf" id="1_5pop7"]
+
+[resource]
+resource_local_to_scene = true
+default_base_scale = 1.0
+default_font = ExtResource("1_5pop7")
+default_font_size = 12
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 16
